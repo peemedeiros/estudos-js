@@ -11,13 +11,13 @@ const verificarEstado = (siglaEstado) => $caixaTexto.value.toUpperCase().trim() 
 const filtrarEstado = (json) =>{
 	console.log(json.filter(verificarEstado));
 }
-//monta a estrutuda zebrada no HTML caso o indice do reduce par ou impar
+//monta a estrutura zebrada no HTML caso o indice do seja reduce par ou impar
 const montarEstrutura = (acumuladora, cidade, i) =>{
 	if(i % 2 == 0){
 	return `${acumuladora}
 	<div class="cidade dark">
 		<div class="numero-cidade">
-			${cidade.id}
+			${i+1}
 		</div>
 
 		<div class="nome-cidades">
@@ -29,7 +29,7 @@ const montarEstrutura = (acumuladora, cidade, i) =>{
 	return `${acumuladora}
 	<div class="cidade light">
 		<div class="numero-cidade">
-			${cidade.id}
+			${i+1}
 		</div>
 
 		<div class="nome-cidades">
