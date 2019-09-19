@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>
+			Adivinhe o numero
+		</title>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="js/script.js"></script>
+		<style type="text/css">
+
+		.container{
+			width: 500px;
+			height: 350px;
+		}
+		#n1,#n2{
+			width: 200px;
+			height: 200px;
+			background-color:#ddd;
+			border: solid 1px #000000;
+			float:left;
+			margin-left: 30px;
+			margin-top: 30px;
+			font-size: 170px;
+			text-align: center;
+		}
+		button{
+			width: 499px;
+			height: 50px;
+			text-align: center;
+			margin-top: 30px;
+		}
+		</style>
+	</head>
+	<body onload="resetar()">
+		<div class="container">
+			<div id="n1">0</div>
+			<input type="text" id="n2">
+			<div style="clear:both"></div>
+			<button onclick="verificar()">VERIFICAR</button>
+		</div>
+	</body>
+</html>
