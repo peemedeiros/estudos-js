@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            Cotação de Moedas
+        </title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./css/style.css" type="text/css"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <h1 class="titulo">Conversor de moedas</h1>
+                <div class="seletor">
+                    <h1 class="titulo">
+                        Selecione moeda que deseja converter
+                    </h1>
+                    <select id="seletor1">
+                        <option value="BRL">Real</option>
+                        <!-- <option value="USD">Dollar</option>
+                        <option value="EUR">Euro</option>
+                        <option value="GBP">Peso Argentino</option>
+                        <option value="ARS">Libras Esterlinas</option> -->
+                    </select>
+                    <h1 class="titulo">
+                            Digite o valor que será convertido
+                    </h1>
+                    <input type="text" value="" id="valorMoeda">
+                </div>
+                
+
+                <div class="seletor">
+                    <h1 class="titulo">
+                            Selecione a moeda para qual o valor será convertido
+                        </h1>
+                        <select id="seletor2">
+                            <option value="BRL">Real</option>
+                            <option value="USD">Dollar</option>
+                            <option value="EUR">Euro</option>
+                            <option value="GBP">Peso Argentino</option>
+                            <option value="ARS">Libras Esterlinas</option>
+                        </select>
+                        <input type="text" id="resultado">
+                </div>
+                <button id="botao">
+                    Testar
+                </button>
+            </div>
+        </div>
+        <script src="js/script.js"></script>
+    </body>
+</html>
