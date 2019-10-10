@@ -17,6 +17,8 @@ const converterMoeda = (moedaEscolhida, convertida) =>{
 
         if(moedaEscolhida == "BRL"){
             $resultado.value = $moedaUsuario.value * json.results.currencies[convertida].buy.toFixed(2);
+            $resultado.style.backgroundColor = "#ccc";
+            $resultado.style.cursor = "not-allowed";
         }
 
     }

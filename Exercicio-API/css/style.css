@@ -51,7 +51,7 @@ select, input{
     min-width: 400px;
     width: auto;
     height: 50px;
-    background: #fff;
+    background-color: #fff;
     margin: 0 auto 0;
     margin-top:50px;
 }
