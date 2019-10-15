@@ -74,6 +74,21 @@ header .container{
     height: 40px;
     font-size: 22px;
     border-radius: 8px;
+    margin-bottom: 20px;
+}
+#btnPesquisar{
+    width: 180px;
+    height: 40px;
+    border:0;
+    border-radius: 8px;
+    font-weight: bold;
+    background-color: rgb(113, 89, 193);
+    color: #fff;
+}
+#btnPesquisar:hover{
+    cursor: pointer;
+    background-color: rgb(99, 79, 167);
+
 }
 .box{
     width: 100%;
@@ -95,7 +110,7 @@ video{
     padding-top: 50px;
     box-sizing: border-box;
 }
-#filmes .container {
+#filmes .containerFilmes {
     display: flex;
     flex-direction: row; 
     flex-wrap: wrap;
@@ -120,7 +135,7 @@ video{
     align-items: center;
     width: 100%;
     height: auto;
-    font-size: 22px;
+    font-size: 16px;
     text-transform: uppercase;
     min-height: 80px;
     max-height: 80px;
