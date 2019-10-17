@@ -2,6 +2,8 @@
 const $mostrar = document.getElementById('mostrar');
 const $pesquisa = document.getElementById('pesquisa');
 const $botao = document.getElementById('btnPesquisar');
+const $caixa = document.querySelectorAll('.caixa');
+const $caixaInfo = document.querySelectorAll('.moreInfoNet');
 
 //pega o valor digitado pelo usuario para realizar a pesquisa na API via 'GET /search/movie'
 const mostrarFilmes = (pesquisado) => {
@@ -70,7 +72,7 @@ const mostrarFilmes = (pesquisado) => {
                          padding-top: 6px;
                          color: #fff;
                          border-radius:4px;
-                         font-weight:bold;">
+                         font-weight:bold;  >
                             ${rate[i] * 10}%
                          </div>
                     </div>
@@ -83,5 +85,24 @@ const mostrarFilmes = (pesquisado) => {
         $container.innerHTML = criarElemento(filmes);
     }
 }
+var mostrar = 0;
+
+const mostrarInfo = () => {
+    if ( mostrar == 0 ){
+            $caixaInfo.style.visibility = "visible";
+            console.log("oi");
+            mostrar = 1;
+    }else if( mostrar == 1){
+            $caixaInfo.style.visibility = "hidden";
+            console.log("xau");
+            mostrar = 0;
+    }
+   
+}
 
 $botao.addEventListener("click", () => mostrarFilmes($pesquisa.value));
+
+for(let i = 0; i < $caixa.length; i++){
+    $caixa[i].addEventListener("click", mostrarInfo);
+}
+    

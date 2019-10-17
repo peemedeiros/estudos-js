@@ -88,7 +88,6 @@ header .container{
 #btnPesquisar:hover{
     cursor: pointer;
     background-color: rgb(99, 79, 167);
-
 }
 .box{
     width: 100%;
@@ -106,31 +105,44 @@ video{
 #filmes{
     width: 100%;
     height: auto;
-    min-height: 700px;
-    padding-top: 50px;
     box-sizing: border-box;
 }
 #filmes .containerFilmes {
+    width: 100%;
+    height: 350px;
+    background-color: aquamarine;
     display: flex;
     flex-direction: row; 
     flex-wrap: wrap;
     flex: 5;
-    justify-content: center;
 }
 .caixa{
-    width: 300px;
-    height: 400px;
-    margin:10px;
+    width: 400px;
+    height: inherit;
     border-radius: 8px;
-    margin-bottom: 50px
+    background-color: #fff;
+    border:solid 1px #ccc;
+    z-index: 999;
+}
+.moreInfoNet{
+    width: 100%;
+    height: 500px;
+    background-color: #999999;
+    position: absolute;
+    bottom: 0;
+    visibility: hidden;
 }
 .caixa:hover{
+   cursor: pointer;
+}
+
+/* .caixa:hover{
     transform: translateY(-10px);
     transition: 0.2s;
     box-shadow: 2px 2px 10px #999999;
     cursor:pointer;
-}
-.nomeFilme{
+} */
+/* .nomeFilme{
     display: flex;
     align-items: center;
     width: 100%;
@@ -145,12 +157,26 @@ video{
     box-sizing: border-box;
     padding:10;
     z-index: 998;
-    color: #fff;
-    
+    color: #fff; 
+} */
+.img{
+    width: inherit;
+    height: inherit;
+}
+.img h2{
+    width: inherit;
+    height: auto;
+    min-height:30px;
+    position:absolute;
+    background-color: #99999980;
+    box-sizing: border-box;
+    padding-left: 10px;
+    text-transform: uppercase;
+    padding-top: 4px;
 }
 .caixa img{
-    width: 100%;
-    height: 320px;
+    width: inherit;
+    height: inherit;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     background-color: #fff;
@@ -175,13 +201,12 @@ video{
     flex-direction: column;
     justify-content: space-between;    
 }
-.caixa:hover > .moreInfo {
+/* .caixa:hover > .moreInfo {
     top:-300px;
     visibility: visible;
     opacity: 1;
     transition: 1s;
-    
-}
+} */
 .subtitulo{
     width: auto;
     height: 30px;
