@@ -26,15 +26,15 @@ const mostrarFilmes = (pesquisado) => {
         const rate = [0]
 
         //guarda todas informações que foram retornadas dos parametros do objeto json nos arrays
-        for(let i = 0; i < json.results.length; i++){
-            if(json.results[i].backdrop_path != null && json.results[i].overview != ""){
-                filmes.push( json.results[i].title );
-                filmesImg.push( json.results[i].backdrop_path );
-                overview.push( json.results[i].overview);
-                released.push( json.results[i].release_date);
-                parseFloat(rate.push( json.results[i].vote_average ));
+            for(let i = 0; i < json.results.length; i++){
+                if(json.results[i].backdrop_path != null && json.results[i].overview != ""){
+                    filmes.push( json.results[i].title );
+                    filmesImg.push( json.results[i].backdrop_path );
+                    overview.push( json.results[i].overview);
+                    released.push( json.results[i].release_date);
+                    parseFloat(rate.push( json.results[i].vote_average ));
+                }
             }
-        }
 
         console.log(filmes);
         console.log(filmesImg);

@@ -38,7 +38,7 @@ const prev = () => {
     const min = 0
 
     let marginLeft = $img[0].style.marginLeft.replace("vw", "");
-    alert(marginLeft);
+    
     marginLeft = marginLeft == min ? max : parseInt(marginLeft) + 50 ;
 
 
