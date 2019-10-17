@@ -21,9 +21,7 @@ const insertSlide = ( arr, $el ) => {
 }
 
 const next = () => {
-
     const $img = document.querySelectorAll(".images");
-
     const max = (50 * ($img.length - 1)) * -1;
     const min = 0;
 
@@ -35,14 +33,12 @@ const next = () => {
 }
 
 const prev = () => {
-
     const $img = document.querySelectorAll(".images");
-
     const max = (50 * ($img.length - 1)) * -1;
     const min = 0
 
     let marginLeft = $img[0].style.marginLeft.replace("vw", "");
-
+    alert(marginLeft);
     marginLeft = marginLeft == min ? max : parseInt(marginLeft) + 50 ;
 
 
@@ -50,7 +46,7 @@ const prev = () => {
 }
 
 
-setInterval(next, 5000);
+setInterval(prev, 5000);
 
 insertSlide( loadImages(), $next);
 
