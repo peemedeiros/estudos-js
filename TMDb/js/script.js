@@ -3,7 +3,7 @@ const $mostrar = document.getElementById('mostrar');
 const $pesquisa = document.getElementById('pesquisa');
 const $botao = document.getElementById('btnPesquisar');
 const $caixa = document.querySelectorAll('.caixa');
-const $caixaInfo = document.querySelectorAll('.moreInfoNet');
+
 
 //pega o valor digitado pelo usuario para realizar a pesquisa na API via 'GET /search/movie'
 const mostrarFilmes = (pesquisado) => {
@@ -20,11 +20,12 @@ const mostrarFilmes = (pesquisado) => {
     //são criados arrays que guardarão todos itens que forem encontrados nos parametros
     //que buscamos no json
     const mostrar = (json) =>{
-        const $container = document.querySelector(".containerFilmes");
+        const $container = document.getElementById('containerFilmes');
         const filmes = [" "];
         const filmesImg = [" "];
         const overview = [" "];
         const released = [" "];
+        const idFilme = [0];
         const rate = [0]
 
         //guarda todas informações que foram retornadas dos parametros do objeto json nos arrays
@@ -34,6 +35,7 @@ const mostrarFilmes = (pesquisado) => {
                     filmesImg.push( json.results[i].backdrop_path );
                     overview.push( json.results[i].overview);
                     released.push( json.results[i].release_date);
+                    idFilme.push( json.results[i].id );
                     parseFloat(rate.push( json.results[i].vote_average ));
                 }
             }
@@ -41,6 +43,7 @@ const mostrarFilmes = (pesquisado) => {
         console.log(filmes);
         console.log(filmesImg);
         console.log(rate);
+        console.log(idFilme);
 
         //recebe um array como base para criar toda estrutura no html
         const criarElemento = (arr) => {
@@ -48,61 +51,52 @@ const mostrarFilmes = (pesquisado) => {
             return arr.reduce((acc, elemento,i)=>
             `${acc}
             <div class="caixa">
-                <h2 class="nomeFilme">
-                    ${elemento}
-                </h2>
-                <img src="https://image.tmdb.org/t/p/original${filmesImg[i]}" />
-
-                <div class="moreInfo">
-                    <h3 class="subtitulo"> sinópse </h3>
-                    <div class="overview">
-                        ${overview[i]}
-                    </div>
-                    <h3 class="subtitulo"> lançado em </h3>
-                    <div class="released">
-                        ${released[i]}
-                    </div>
-                    <h3 class="subtitulo"> popularidade </h3>
-                    <div class="barra_pop">
-                        <div class="progress" style="width: ${rate[i] * 10}%;
-                         height: 28;
-                         background-color: rgb(77, 59, 134);
-                         text-align: center;
-                         box-sizing: border-box;
-                         padding-top: 6px;
-                         color: #fff;
-                         border-radius:4px;
-                         font-weight:bold;  >
-                            ${rate[i] * 10}%
-                         </div>
-                    </div>
+                <div class="img">
+                    <h2>${elemento}</h2>
+                    <img src="https://image.tmdb.org/t/p/original/${filmesImg[i]}" alt="backdrops">
                 </div>
             </div>
             `
             );
         }
+        
 
         $container.innerHTML = criarElemento(filmes);
     }
 }
-var mostrar = 0;
 
 const mostrarInfo = () => {
-    if ( mostrar == 0 ){
-            $caixaInfo.style.visibility = "visible";
-            console.log("oi");
-            mostrar = 1;
-    }else if( mostrar == 1){
-            $caixaInfo.style.visibility = "hidden";
-            console.log("xau");
-            mostrar = 0;
-    }
-   
+
+    const htmlInfo = () => { `
+    <div class="moreInfoNet">
+        <div class="nomeFilmes">TITULO</div>
+        <div class="overview">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium ipsum corporis temporibus accusamus necessitatibus, harum cumque iusto reiciendis, dolorum soluta delectus aliquam fugiat sapiente. Porro nemo nesciunt incidunt voluptatum totam!</div>
+        <div class="released">2222-22-22</div>
+        <div class="barra_pop">
+            <div class="progresso"> 20 %</div>
+        </div>
+     </div>
+    `};
+
+    const $caixaInfo = document.createElement('div');
+    $caixaInfo.className = '.moreInfoNet';
+    $caixaInfo.innerHTML = htmlInfo;
+};
+
+for(let i = 0; i < $caixa.length; i++){
+    $caixa[i].addEventListener("click",() => mostrarInfo());
 }
 
 $botao.addEventListener("click", () => mostrarFilmes($pesquisa.value));
 
-for(let i = 0; i < $caixa.length; i++){
-    $caixa[i].addEventListener("click", mostrarInfo);
-}
+
+/* <div class="moreInfoNet">
+    <div class="nomeFilmes">${elemento}</div>
+    <div class="overview">${overview[i]}</div>
+    <div class="released">${released[i]}</div>
+    <div class="barra_pop">
+        <div class="progresso" style="width:${rate[i] * 10}%;">${rate[i] * 10}%</div>
+    </div>
+</div> */
+
     
