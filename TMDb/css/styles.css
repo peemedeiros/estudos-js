@@ -13,6 +13,9 @@ header{
     z-index: 999;
     position: fixed;
 }
+body{
+    overflow: hidden;
+}
 .container{
     width: 1200px;
     height: inherit;
@@ -104,36 +107,46 @@ video{
 }
 #filmes{
     width: 100%;
-    height: auto;
+    height: 350px;
     box-sizing: border-box;
 }
-#filmes #containerFilmes {
-    width: 100%;
-    height: 350px;
+#containerFilmes {
+    width: 100vw;
+    height:inherit;
     display: flex;
-    flex-direction: row; 
-    flex-wrap: wrap;
-    flex: 5;
+    overflow: hidden;
 }
 .caixa{
-    width: 400px;
+    width: 500px;
     height: inherit;
     border-radius: 8px;
+    border:solid 1px #888888;
     background-color: #fff;
-    z-index: 2;
+    position: relative;
 }
 .moreInfoNet{
     width: 100%;
     height: auto;
-    min-height: 500px;
+    min-height: 200px;
     background-color: rgb(241, 239, 255);
-    bottom: 0;
-    visibility: visible;
-    z-index: 3;
+    position: absolute;
+    bottom: -20vh;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+    padding: 15px;
 
 }
-.caixa:hover{
+.caixa:hover > .moreInfoNet{
    cursor: pointer;
+   opacity: 1;
+   visibility: visible;
+   bottom: 0vh;
+   transition: 1s;
+}
+.caixa:hover{
+    cursor: pointer;
 }
 
 /* .caixa:hover{
@@ -159,12 +172,12 @@ video{
     color: #fff;
     margin-bottom: 20px;
 }
-.img{
+.images{
     width: inherit;
     height: inherit;
     
 }
-.img h2{
+.images h2{
     width: inherit;
     height: auto;
     min-height:30px;
@@ -174,6 +187,7 @@ video{
     padding-left: 10px;
     text-transform: uppercase;
     padding-top: 4px;
+    overflow: hidden;
 }
 .caixa img{
     width: inherit;
@@ -184,7 +198,7 @@ video{
     border:solid 2px #ccc;
 }
 
-.moreInfo{
+/* .moreInfo{
     width: 400px;
     height: auto;
     min-height: 400px;
@@ -202,13 +216,39 @@ video{
     display: flex;
     flex-direction: column;
     justify-content: space-between;    
-}
+} */
 /* .caixa:hover > .moreInfo {
     top:-300px;
     visibility: visible;
     opacity: 1;
     transition: 1s;
 } */
+#containerSlider{
+    width: 100vw;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+#prev, #next {
+    width:100px;
+    height:500px;
+    font: bold 75px sans-serif;
+    text-align: center;
+    user-select: none;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+#prev:hover, #next:hover {
+    background-color: #652e8a1e;
+    cursor: pointer;
+    transition:all 1s;
+    color:#000000;
+}
 .subtitulo{
     width: auto;
     height: 30px;
@@ -218,7 +258,7 @@ video{
     text-transform: uppercase;
 }
 .overview{
-    width: 700px;
+    width: 100%;
     height: auto;
     min-height:22px;
     font-size: 22px;
@@ -249,6 +289,11 @@ video{
     height: 50px;
     border:solid 1px #ccc;
     border-radius: 4px;
+    display: flex;
+}
+.barra_pop img{
+    width: 50px;
+    height: 50px;
     
 }
 .progresso{
