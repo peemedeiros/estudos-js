@@ -16,7 +16,6 @@ const mostrarFilmes = ( pesquisado ) => {
     .then( res => mostrar( res ) );
 }
 
-
 //FUNÇÃO QUE GUARDA OS VALORES RECEBIDOS DA API PARA OS ARRAYS
 const mostrar = (json) =>{
 
@@ -40,10 +39,14 @@ const mostrar = (json) =>{
     }
 
     // CONTRÓI TODA ESTRUTURA HTML A PARTIR DO MÉTODO reduce
-    const criarElemento = (arr) => {
+    const criarElemento = ( arr ) => {
+        const moverElemento = () => {
+            
+        }
+        
         return arr.reduce((acc, elemento,i)=>
         `${acc}
-        <div class="caixa" style="right:0px;">
+        <div class="caixa" style="right:${mover}px;">
             <div class="images">
                 <h2 class="nomeFilmes">${elemento}</h2>
                 <img src="${filmesImg[i]}" alt="backdrops">
@@ -53,15 +56,13 @@ const mostrar = (json) =>{
         );
     }
     $container.innerHTML = criarElemento(filmes);
-    
-    
 }
 
 mostrarFilmes("piratas do caribe");
 
-
 $botao.addEventListener("click", () => mostrarFilmes(pesquisa.value));
-$next.addEventListener("click", () => moverDireita());
+
+
 
 
 
