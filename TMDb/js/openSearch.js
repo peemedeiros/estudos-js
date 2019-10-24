@@ -4,6 +4,7 @@ $(document).ready(function(){
             visibility:'visible',
             width:'15vw',
             transition:'1s',
+            opacity:'1',
         });
     });
 });
