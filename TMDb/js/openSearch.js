@@ -1,0 +1,9 @@
+$(document).ready(function(){
+    $('.search').click(function(){
+        $('#pesquisa').css({
+            visibility:'visible',
+            width:'15vw',
+            transition:'1s',
+        });
+    });
+});

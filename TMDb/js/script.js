@@ -1,18 +1,19 @@
-//pegando elementos do html
+//BUSCANDO ELEMENTOS DO HTML
 const $mostrar = document.getElementById('mostrar');
 const $pesquisa = document.getElementById('pesquisa');
-const $botao = document.getElementById('btnPesquisar');
-const $caixa = document.querySelectorAll('.caixa');
-const $caixaInfo = document.querySelectorAll('.moreInfoNet');
+const $botao = document.getElementById('botao');
+const $next = document.getElementById('next');
+const $prev = document.getElementById('prev');
+const $container = document.getElementById('containerFilmes');
 
 
 //pega o valor digitado pelo usuario para realizar a pesquisa na API via 'GET /search/movie'
 const mostrarFilmes = (pesquisado) => {
 
-    //link para a requisição da API passando o parametro na query de pesquisa
+//FAZ UMA REQUISIÇÃO NA API DE ACORDO COM O PARAMETRO
+const mostrarFilmes = ( pesquisado ) => {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=42ebeea476d0f2275d00448a81e47aa9&language=pt-BR&query=${pesquisado}&page=1&include_adult=false`;
-    
-    //traz as 'promessas' da API então transforma em formato json e depois aplica a função mostrar()
+    //TRAZ AS RESPOSTAS DA API, TRANSFORMA EM FORMATO JSON E APLICA A FUNÇÃO mostrar();
     fetch(url)
     .then( res => res.json())
     .then( res => mostrar( res ));
@@ -83,8 +84,23 @@ const mostrarFilmes = (pesquisado) => {
             );
         }
 
-        $container.innerHTML = criarElemento(filmes);
+    //ARRAY QUE GUARDARÃO AS RESPOSTAS DA API
+    const filmes = [" "];
+    const filmesImg = [" "];
+    const overview = [" "];
+    const released = [" "];
+    const idFilme = [0];
+    const rate = [0];
+    
+    for(let i = 0; i < json.results.length; i++){
+        if(json.results[i].backdrop_path != null && json.results[i].overview != ""){
+            filmes.push( json.results[i].title );
+            filmesImg.push(`https://image.tmdb.org/t/p/original/${json.results[i].backdrop_path}`);
+            overview.push( json.results[i].overview);
+            released.push( json.results[i].release_date);
+            idFilme.push( json.results[i].id );
+            parseFloat(rate.push( json.results[i].vote_average ));
+        }
     }
 }
 $botao.addEventListener("click", () => mostrarFilmes($pesquisa.value));
-
