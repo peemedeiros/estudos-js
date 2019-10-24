@@ -5,6 +5,7 @@ const $botao = document.getElementById('btnPesquisar');
 const $caixa = document.querySelectorAll('.caixa');
 const $caixaInfo = document.querySelectorAll('.moreInfoNet');
 
+
 //pega o valor digitado pelo usuario para realizar a pesquisa na API via 'GET /search/movie'
 const mostrarFilmes = (pesquisado) => {
 
@@ -13,8 +14,8 @@ const mostrarFilmes = (pesquisado) => {
     
     //traz as 'promessas' da API então transforma em formato json e depois aplica a função mostrar()
     fetch(url)
-    .then( res => res.json() )
-    .then( res => mostrar( res ) );
+    .then( res => res.json())
+    .then( res => mostrar( res ));
 
     // funçao que tem como parametro um json.
     //são criados arrays que guardarão todos itens que forem encontrados nos parametros
@@ -25,7 +26,7 @@ const mostrarFilmes = (pesquisado) => {
         const filmesImg = [" "];
         const overview = [" "];
         const released = [" "];
-        const rate = [0]
+        const rate = [0];
 
         //guarda todas informações que foram retornadas dos parametros do objeto json nos arrays
             for(let i = 0; i < json.results.length; i++){
@@ -85,24 +86,5 @@ const mostrarFilmes = (pesquisado) => {
         $container.innerHTML = criarElemento(filmes);
     }
 }
-var mostrar = 0;
-
-const mostrarInfo = () => {
-    if ( mostrar == 0 ){
-            $caixaInfo.style.visibility = "visible";
-            console.log("oi");
-            mostrar = 1;
-    }else if( mostrar == 1){
-            $caixaInfo.style.visibility = "hidden";
-            console.log("xau");
-            mostrar = 0;
-    }
-   
-}
-
 $botao.addEventListener("click", () => mostrarFilmes($pesquisa.value));
 
-for(let i = 0; i < $caixa.length; i++){
-    $caixa[i].addEventListener("click", mostrarInfo);
-}
-    

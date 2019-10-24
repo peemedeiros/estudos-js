@@ -35,7 +35,7 @@ const next = () => {
 const prev = () => {
     const $img = document.querySelectorAll(".images");
     const max = (50 * ($img.length - 1)) * -1;
-    const min = 0
+    const min = 0;
 
     let marginLeft = $img[0].style.marginLeft.replace("vw", "");
     
