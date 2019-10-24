@@ -1,7 +1,7 @@
 //BUSCANDO ELEMENTOS DO HTML
 const $mostrar = document.getElementById('mostrar');
 const $pesquisa = document.getElementById('pesquisa');
-const $botao = document.getElementById('btnPesquisar');
+const $botao = document.getElementById('botao');
 const $next = document.getElementById('next');
 const $prev = document.getElementById('prev');
 const $container = document.getElementById('containerFilmes');
@@ -40,17 +40,15 @@ const mostrar = (json) =>{
 
     // CONTRÓI TODA ESTRUTURA HTML A PARTIR DO MÉTODO reduce
     const criarElemento = ( arr ) => {
-        const moverElemento = () => {
-            
-        }
         
         return arr.reduce((acc, elemento,i)=>
         `${acc}
-        <div class="caixa" style="right:${mover}px;">
+        <div class="caixa">
             <div class="images">
-                <h2 class="nomeFilmes">${elemento}</h2>
                 <img src="${filmesImg[i]}" alt="backdrops">
             </div>
+            <h2 class="nomeFilmes">${elemento}</h2>
+            ${released[i]}
         </div>
         `
         );
@@ -61,6 +59,8 @@ const mostrar = (json) =>{
 mostrarFilmes("piratas do caribe");
 
 $botao.addEventListener("click", () => mostrarFilmes(pesquisa.value));
+
+
 
 
 
