@@ -6,6 +6,7 @@ const $next = document.getElementById('next');
 const $prev = document.getElementById('prev');
 const $container = document.getElementById('containerFilmes');
 const $containerModal = document.getElementById('containerModal');
+const $close = document.getElementById('close');
 
 
 //FAZ UMA REQUISIÇÃO NA API DE ACORDO COM O PARAMETRO
@@ -36,7 +37,9 @@ const mostrar = (json) =>{
                         .map ( filme => ({
                             'filme': filme.title,
                             'imagem': `https://image.tmdb.org/t/p/original/${filme.backdrop_path}`,
-                            'descricao': filme.overview})
+                            'descricao': filme.overview,
+                            'lancamento': filme.release_date,
+                            'popularidade': filme.vote_average})
                         );
 
     for(let i = 0; i < json.results.length; i++){
@@ -46,16 +49,7 @@ const mostrar = (json) =>{
             overview.push( json.results[i].overview);
             released.push( json.results[i].release_date);
             idFilme.push( json.results[i].id );
-            parseFloat(rate.push( json.results[i].vote_average ));
-           
-            // info.push ( {
-            //     'filme': json.results[i].title,
-            //     'imagem': `https://image.tmdb.org/t/p/original/${json.results[i].backdrop_path}`,
-            //     'descricao': json.results[i].overview
-            // })
-
-
-            
+            parseFloat(rate.push( json.results[i].vote_average )); 
         }
     }
 
@@ -77,25 +71,63 @@ const mostrar = (json) =>{
     $container.innerHTML = criarElemento(filmes);
 }
 
-const criarModal = ($el, id) => {
-    $el.innerHTML += info[id].filme + info[id].imagem;
-    $el.style = "z-index:2000;";        
+const criarModal = ($el, id ,$fechar) => {
+    // $el.innerHTML += info[id].filme + info[id].imagem;
+    $fechar.style = "z-index:999999;";
+    $el.style = "z-index:2000;";
+    
+    $el.innerHTML = `
+    <div id="modal">
+        <div class="backdrop">
+            <img src="${info[id].imagem}" alt="imagem">
+        </div>
+        <div class="informacoes">
+            <h1>${info[id].filme}</h1>
+            <p>
+                ${info[id].descricao}
+            </p>
+            <div class="rate">
+                ${criarEstrelas(info[id].popularidade)}
+            </div>
+        </div>
+    </div>
+    `;
+    // const fecharModal = () => {
+        
+    //     $el.style = 'z-index:-5;';
+    // }
+    // $fechar.addEventListener("click", fecharModal($containerModal));
+
 }
+const criarEstrelas = (rate) =>{
+    var estrela = ""
+    for(let i = 0; i < parseInt(rate); i+=2){
+        estrela += `<img src="img/star.png">`;
+    }
+    return estrela;
+}
+
 
 $container.addEventListener("click", (t) => { 
     caixaFilme = t.target.id;
     console.log(caixaFilme);
 
     if(caixaFilme != "containerFilmes" ){
-        criarModal($containerModal, caixaFilme);
+        criarModal($containerModal, caixaFilme, $close);
     }
 
 });
 
+const fecharModal = ($el, $fechar) => {
+    $el.style = "z-index: -5 ;";
+    $fechar.style = "z-index:-5;";
+}
 
 mostrarFilmes("transformers");
 
 $botao.addEventListener("click", () => mostrarFilmes(pesquisa.value));
+
+$close.addEventListener("click", () => fecharModal($containerModal, $close));
 
 
 

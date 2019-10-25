@@ -3,7 +3,7 @@ $(document).ready(function(){
         $('#pesquisa').css({
             visibility:'visible',
             width:'15vw',
-            transition:'1s',
+            transition:'0.5s',
             opacity:'1',
         });
     });
