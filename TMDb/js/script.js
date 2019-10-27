@@ -7,6 +7,7 @@ const $prev = document.getElementById('prev');
 const $container = document.getElementById('containerFilmes');
 const $containerModal = document.getElementById('containerModal');
 const $close = document.getElementById('close');
+const $contFilmes = document.getElementById('filmes');
 
 
 //FAZ UMA REQUISIÇÃO NA API DE ACORDO COM O PARAMETRO
@@ -71,9 +72,10 @@ const mostrar = (json) =>{
     $container.innerHTML = criarElemento(filmes);
 }
 
-const criarModal = ($el, id ,$fechar) => {
+const criarModal = ($el, id ,$fechar,$bg) => {
     $fechar.style = "z-index:999999;";
     $el.style = "z-index:2000;";
+    $bg.style = "-webkit-filter: blur(15px);";
 
     $el.innerHTML = `
     <div id="modal">
@@ -101,9 +103,10 @@ const criarEstrelas = (rate) =>{
     return estrela;
 }
 
-const fecharModal = ($el, $fechar) => {
+const fecharModal = ($el, $fechar,$bg) => {
     $el.style = "opacity:0; transition:300ms;";
     $fechar.style = "z-index:-5;";
+    $bg.style = "-webkit-filter: blur(0px);"
 }
 
 
@@ -112,7 +115,7 @@ $container.addEventListener("click", (t) => {
     console.log(caixaFilme);
 
     if(caixaFilme != "containerFilmes" ){
-        criarModal($containerModal, caixaFilme, $close);
+        criarModal($containerModal, caixaFilme, $close, $contFilmes);
     }
 });
 
@@ -120,4 +123,4 @@ mostrarFilmes("transformers");
 
 $botao.addEventListener("click", () => mostrarFilmes(pesquisa.value));
 
-$close.addEventListener("click", () => fecharModal($containerModal, $close));
+$close.addEventListener("click", () => fecharModal($containerModal, $close,$contFilmes));
