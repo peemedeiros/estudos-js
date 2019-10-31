@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Documentação</title>
+    <script src="./js/jquery.js"></script>
+</head>
+    <body>
+        <header>
+            <div class="container center">
+                <div class="logo">
+                    The 
+                    <br>
+                    Movie DB
+                </div>
+
+                <ul class="menu">
+                    <li class="menu-itens">
+                       <a href="index.html">
+                            Filmes
+                       </a>
+                    </li>
+                    <li class="menu-itens">
+                        <a href="documentation.html">
+                                Documentação
+                        </a>
+                    </li>
+                    <!-- <li class="menu-itens">Programas de TV</li> -->
+                </ul>
+            </div>
+        </header>
+
+        <div class="box"></div>
+
+        <section id="introducao">
+            <div class="container center">
+                <h1 class="titulo text-center">
+                    Objetivo do projeto
+                </h1>
+                <div class="apresentacao">
+                    <p class="texto">
+                        O projeto for desenvolvido para praticar o importante conceito de utilização de API's externas e também introduzir o aluno à prática de consultar as informações e métodos contidos na Documentação da API.
+                    </p>
+                    <p class="texto">
+                        Esse documento foi desenvolvido para auxiliar o usuario a entender os procedimento utilizados no para o consumo dessa API.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section id="conteudo">
+            <div class="container center">
+                <ul class="menu-lateral">
+                    <li class="menu-lateral-itens">
+                        <a href="#comecando">
+                            Começando
+                        </a>
+                    </li>
+                    <li class="menu-lateral-itens">
+                        <a href="#passo2">
+                            CONSUMINDO API
+                        </a>
+                    </li>
+                    <li class="menu-lateral-itens">
+                        <a href="#passo3">
+                            REALIZANDO REQUISIÇÕES
+                        </a>
+                    </li>
+                    <li class="menu-lateral-itens">
+                        <a href="#bucando-imagens"> 
+                            ATRIBUINDO IMAGENS
+                        </a>
+                    </li>
+                    <li class="menu-lateral-itens">
+                        <a href="#json">
+                            JSON
+                        </a>
+                    </li>
+                                
+                </ul>
+                <div class="instrucoes">
+                    <div id="comecando">
+                        <h2 class="subtitulo">
+                            Começando
+                        </h2>
+                        <p class="texto">
+                            O primeiro passo a ser realizado é entrar no site da API <br>
+                        </p>
+                        <h2 class="subtitulo">
+                            <a href="https://www.themoviedb.org/">
+                                THE MOVIE DATABASE
+                            </a>
+                        </h2>
+                        <p class="texto">
+                            Após acessar, crie uma conta gratuitamente para receber sua chave privada.<br>
+                            Logue e siga o caminho: <br>
+                            Clique no icone onde se encontra suas informações principais > settings > API
+                        </p><br>
+                        <img src="img/img1.PNG" alt="step1">
+                        
+                    </div>
+                    <div id="passo2">
+                        <h2 class="subtitulo">
+                            Consumindo API
+                        </h2>
+                        <p class="texto">
+                            Entrando na documentacao da API temos varios métodos GET diferentes para trazer os dados, no projeto foi utilizado o método de busca por query
+                            em STRING. Logo é possível buscar os filmes com base em uma palavra chave, que será o nome do filme.<br>
+                            Na documentação da API é possível realizar requisições de testes utilizando esse método. Passando como atributos sua chave privada e o nome do filme.
+                        </p>
+                        <h2 class="subtitulo">
+                            <a href="https://developers.themoviedb.org/3/search/search-movies">
+                                Realize testes
+                            </a>
+                            <br><br>
+                        </h2>
+                        <img src="img/img2.PNG" alt="step2">
+                    </div>
+                    <div id="passo3">
+                        <h2 class="subtitulo">
+                                Realizando requisições
+                        </h2>
+                        <p class="texto">
+                            Para realizar as consultas utilizando o nome do filme, você deve utilizar a url: <br><br>
+                            https://api.themoviedb.org/3/search/movie?api_key=APIKEY&language=en-US&query=piratasdocaribe&page=1&include_adult=false<br><br>
+
+                            Note que você deve substituir APIKEY por sua chave privada, no atibuto QUERY será o elemento de busca na API, ou seja, é nele em que você deve realizar suas buscas pelo nome do filme. 
+                        </p>
+                    </div>
+                    <div id="bucando-imagens">
+                        <h2 class="subtitulo">
+                            Atribuindo imagens
+                        </h2>
+                        <p class="texto">
+                            Ao observarmos o JSON podemos enxergar que o atributo que contém as imagens é o 'back_drops' porém é necessário dois parâmetros para que as imagens sejam carregadas de forma visível.<br><br>
+
+                            São esse atributos:
+                            <br>
+                            A URL base https://image.tmdb.org/t/p/
+                            <br>
+                            O tamanho da imagem /w500/
+                            <br>
+                            E o nome do arquivo, que está guardado no atributo back_drops do JSON <br><br>
+
+                            Exemplo: https://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg <br><br>
+
+                            NOTA: existem outros parametros para o tamanho da imagem e até mesmo outros métodos de buscar as imagens. Todas disponiveis na documentação oficial da API.
+                            
+                        </p>
+                    </div>
+                    <div id="json">
+                        <h2 class="subtitulo">
+                            JSON
+                        </h2>
+                        <p class="texto">
+                            A partir das requisições a API nos retorna objetos JSON.<br><br>
+                        </p>
+                        <img src="img/img3.PNG" alt="step3">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container center">
+                <h2>Desenvolvido por Pedro Medeiros</h2>
+                <h2>API utilizada: The Movie database</h2>
+            </div>
+        </footer>
+        <script src="./js/ancora.js"></script>
+    </body>
+</html>
