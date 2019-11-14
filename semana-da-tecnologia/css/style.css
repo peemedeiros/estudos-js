@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    padding: 0;
+
+}
+.logo-senai{
+    height: 64px;
+    width: 300px;
+}
+.img-center{
+    margin: auto;
+}
+.img-back{
+    width: 100%;
+    height: 500px;
+    position: relative;
+    z-index: -1;
+}
+.p-absolute{
+    position:absolute;
+}
+.bg-img{
+    background-image: url('../img/agenda.png');
+    background-size: cover;
+}
+.backgroud-section{
+    width: 100%;
+    height: 550px;
+    background-image: url('../img/agenda.png');
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+}
+.opacidade{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+.stand{
+    width: 100%;
+    height: 500px;
+    background-image: url('../img/image005.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
