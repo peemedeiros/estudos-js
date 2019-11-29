@@ -1,0 +1,21 @@
+{
+  "name": "lojavirtual",
+  "version": "1.0.0",
+  "description": "Projeto realizado em aula de uma loja virtual 2019 - SENAI Jandira",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "loja"
+  ],
+  "author": "Pedro Medeiros",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "nodemon": "^2.0.1"
+  }
+}

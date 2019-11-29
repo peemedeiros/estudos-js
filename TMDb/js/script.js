@@ -33,10 +33,10 @@ const mostrar = (json) =>{
     const rate = [0];
 
 
-    info = json.results.filter ( filme => filme.backdrop_path != null && filme.overview != "")
+    info = json.results.filter ( filme => filme.poster_path != null && filme.overview != "")
                         .map ( filme => ({
                             'filme': filme.title,
-                            'imagem': `https://image.tmdb.org/t/p/original/${filme.backdrop_path}`,
+                            'imagem': `https://image.tmdb.org/t/p/original/${filme.poster_path}`,
                             'descricao': filme.overview,
                             'lancamento': filme.release_date,
                             'popularidade': filme.vote_average})
@@ -45,7 +45,7 @@ const mostrar = (json) =>{
     for(let i = 0; i < json.results.length; i++){
         if(json.results[i].backdrop_path != null && json.results[i].overview != ""){
             filmes.push( json.results[i].title );
-            filmesImg.push(`https://image.tmdb.org/t/p/original/${json.results[i].backdrop_path}`);
+            filmesImg.push(`https://image.tmdb.org/t/p/original/${json.results[i].poster_path}`);
             overview.push( json.results[i].overview);
             released.push( json.results[i].release_date);
             idFilme.push( json.results[i].id );
