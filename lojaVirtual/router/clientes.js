@@ -2,18 +2,11 @@ const express = require('express');
 const router = express.Router();
 const conn = require('../connection');
 
-const clientes = [{
-    "id":"1",
-    "nome":"Pedro",
-    "idade":"20"
-} , {
-    "id":"2",
-    "nome":"Medeiros",
-    "quantidade":"20"
-}]
-
+//
 router.get('/', (req, res) => {
+
     const sql = "SELECT * FROM clientes";
+
     conn.query(sql, (error, result) => {
         if(error){
             res.json(error);
@@ -23,8 +16,13 @@ router.get('/', (req, res) => {
     });
 });
 
+//inserindo dados via post
 router.post('/', (req, res) => {
-    const sql = "INSERT INTO clientes (nome, idade) values ('Jhon', 22)";
+
+    const nomeCliente = req.body.nome;
+    const idadeCliente = req.body.idade;
+
+    const sql = `INSERT INTO clientes (nome, idade) values ('${nomeCliente}', ${idadeCliente})`;
 
     conn.query(sql, (error, result) => {
         if(error){
@@ -35,12 +33,21 @@ router.post('/', (req, res) => {
     });
 });
 
-router.get('/:id' , (req, res) => {
+router.delete('/:id' , (req, res) => {
     const id = req.params.id;
-    res.json({
-        "status":"ok",
-        "data":clientes[id - 1]
-    });
+    const sql = `DELETE FROM clientes WHERE id = ${id}`;
+
+    conn.query(sql, (error, result) =>{
+        if(error){
+            res.json({
+                "erro" : error.sql
+            });
+        }else{
+            res.json(result);
+        }
+    })
+
+
 });
 
 module.exports = router;

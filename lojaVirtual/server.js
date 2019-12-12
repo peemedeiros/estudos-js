@@ -1,7 +1,9 @@
 const express = require ('express');
+const cors = require ('cors');
 // const bodyParser = require ('body-parser');
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 const routerProdutos = require('./router/produtos');
@@ -13,13 +15,20 @@ app.get( '/', ( req, res ) => res.json({
                                         msg:"sevidor API - Loja" 
                                         }));
 
+app.use('/produtos', routerProdutos);
+app.use('/clientes', routerClientes);
+
 // app.get('/produtos', (req, res) => res.json({
 //                                             "status": "ok",
 //                                             "data":bd
 //                                             }));
+// app.use(function(req, res, next){
+//     res.header('Access-Control-Allow-Origin', '*');
+//     next();
+// })
 
-app.use('/produtos', routerProdutos);
-app.use('/clientes', routerClientes);
+
+
 
 // app.get('/clientes', (req, res) => res.json({
 //                                             "status":"ok",
@@ -42,5 +51,5 @@ app.use('/clientes', routerClientes);
 //     });
 // });
 
-app.listen( 3000, () => console.log("Servidor Node") );
+app.listen( 3000 );
 
