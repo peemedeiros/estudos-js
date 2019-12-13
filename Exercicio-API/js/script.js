@@ -1,4 +1,4 @@
-const $seletorUsuario = document.getElementById('seletor1');
+ const $seletorUsuario = document.getElementById('seletor1');
 const $moedaUsuario = document.getElementById('valorMoeda');
 const $seletorMoeda = document.getElementById('seletor2');
 const $resultado = document.getElementById('resultado');

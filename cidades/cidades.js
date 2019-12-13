@@ -22446,7 +22446,7 @@ const criarLinhas = ( cidades ) => {
             <td>${i + 1}</td>
             <td>${cidade}</td>
         </tr>`
-     , "" );
+     , "" );    
 }
 
 $pesquisar.addEventListener("click", mostrarCidades);
